@@ -1,0 +1,41 @@
+=== seed 0
+  E1 N=10 done
+  E1 N=25 done
+  E1 N=50 done
+  E1 N=100 done
+  E1 N=199 done
+  E2 done
+  E3 done
+=== seed 1
+  E1 N=10 done
+  E1 N=25 done
+  E1 N=50 done
+  E1 N=100 done
+  E1 N=199 done
+  E2 done
+  E3 done
+=== seed 2
+  E1 N=10 done
+  E1 N=25 done
+  E1 N=50 done
+  E1 N=100 done
+  E1 N=199 done
+  E2 done
+  E3 done
+=== seed 3
+  E1 N=10 done
+  E1 N=25 done
+  E1 N=50 done
+  E1 N=100 done
+  E1 N=199 done
+  E2 done
+  E3 done
+=== seed 4
+  E1 N=10 done
+  E1 N=25 done
+  E1 N=50 done
+  E1 N=100 done
+  E1 N=199 done
+  E2 done
+  E3 done
+ALL EXPERIMENTS DONE

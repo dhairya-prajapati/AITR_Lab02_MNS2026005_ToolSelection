@@ -1,0 +1,75 @@
+{'C': 1, 'val_top1': np.float64(0.711889132020423), 'fit_s': 16.52538251876831}
+{'C': 10, 'val_top1': np.float64(0.8047653780695356), 'fit_s': 23.24922013282776}
+{'C': 100, 'val_top1': np.float64(0.8028203257962557), 'fit_s': 27.962743043899536}
+{
+  "data_report": {
+    "raw_rows": 20614,
+    "after_exact_dup_removal": 20563,
+    "ambiguous_norm_queries_removed": 12,
+    "after_ambiguity_removal": 20536,
+    "after_norm_dedup": 20523,
+    "n_tools": 199,
+    "all_tools_have_description": true,
+    "min_q_per_tool": 12,
+    "max_q_per_tool": 1104,
+    "median_q_per_tool": 68.0
+  },
+  "split_sizes": {
+    "train": 12303,
+    "val": 4113,
+    "test": 4107
+  },
+  "leak_norm_text_overlap": {
+    "train&test": 0,
+    "train&val": 0,
+    "val&test": 0
+  },
+  "tools_in_test_not_in_train": 0,
+  "bm25_vs_rank_bm25_max_abs_diff": 7.105427357601002e-15,
+  "random_baseline": {
+    "top1": 0.0041392744095446795,
+    "top3": 0.01241782322863404,
+    "mrr": 0.028394154516228856,
+    "macro_top1": 0.004551686208766208,
+    "n": 4107
+  },
+  "chance_1_over_N": 0.005025125628140704,
+  "lr_label_shuffled_control": {
+    "top1": 0.01728755782809837,
+    "top3": 0.05405405405405406,
+    "mrr": 0.06479503743317062,
+    "macro_top1": 0.0033250717609750223,
+    "n": 4107
+  },
+  "tfidf_k0_equals_desc_only": true,
+  "lr_selected_C": 10,
+  "seed0_test_BM25": {
+    "top1": 0.3301680058436815,
+    "top3": 0.46092037983929873,
+    "mrr": 0.41810686955897,
+    "macro_top1": 0.4293188672953113,
+    "n": 4107
+  },
+  "seed0_test_TFIDF-desc": {
+    "top1": 0.3360116873630387,
+    "top3": 0.46700754808862915,
+    "mrr": 0.4235010615753848,
+    "macro_top1": 0.42999649020857567,
+    "n": 4107
+  },
+  "seed0_test_Hybrid(k=5)": {
+    "top1": 0.5412710007304602,
+    "top3": 0.6990504017531045,
+    "mrr": 0.6380337157903492,
+    "macro_top1": 0.6319361347047494,
+    "n": 4107
+  },
+  "seed0_test_TFIDF+LR": {
+    "top1": 0.8027757487216947,
+    "top3": 0.9084489895300706,
+    "mrr": 0.8620212732095297,
+    "macro_top1": 0.7619097796666808,
+    "n": 4107
+  }
+}
+BASELINE VALIDATION PASSED

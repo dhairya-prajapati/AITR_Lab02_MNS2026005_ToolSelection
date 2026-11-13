@@ -1,0 +1,5 @@
+method,fit_s,single_query_ms
+BM25,0.008,0.346
+TFIDF-desc,0.01,0.351
+Hybrid(k=5),0.027,0.47
+TFIDF+LR,24.425,0.531

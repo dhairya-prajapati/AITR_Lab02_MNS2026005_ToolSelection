@@ -1,0 +1,9 @@
+python 3.12.3 | Linux-6.18.44-fc-v445-x86_64-with-glibc2.39
+numpy        2.5.4
+pandas       3.0.6
+sklearn      1.9.1
+scipy        1.18.1
+matplotlib   3.11.2
+rank_bm25    0.2.2 (no __version__ attr)
+data report: {"raw_rows": 20614, "after_exact_dup_removal": 20563, "ambiguous_norm_queries_removed": 12, "after_ambiguity_removal": 20536, "after_norm_dedup": 20523, "n_tools": 199, "all_tools_have_description": true, "min_q_per_tool": 12, "max_q_per_tool": 1104, "median_q_per_tool": 68.0}
+ENV OK

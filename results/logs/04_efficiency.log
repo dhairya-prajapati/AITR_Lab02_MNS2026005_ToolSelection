@@ -1,0 +1,6 @@
+x86_64 | 1 vCPU
+     method  fit_s  single_query_ms
+       BM25  0.008            0.346
+ TFIDF-desc  0.010            0.351
+Hybrid(k=5)  0.027            0.470
+   TFIDF+LR 24.425            0.531

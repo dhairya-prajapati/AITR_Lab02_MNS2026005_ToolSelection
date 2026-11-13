@@ -1,0 +1,16 @@
+{
+  "_comment": "FROZEN before any comparative result was viewed. Changes must be logged in research_decisions.md.",
+  "dataset": {"queries": "data/metatool_all_clean_data.csv", "descriptions": "data/metatool_plugin_des.json", "source_commit": "HowieHwong/MetaTool@35e81bb7576826e980c80fed8f8c0a2b4a1e6fbb"},
+  "seeds": [0, 1, 2, 3, 4],
+  "split": {"train": 0.6, "val": 0.2, "test": 0.2, "unit": "query, stratified by tool, after normalised-text de-duplication"},
+  "library_sizes": [10, 25, 50, 100, 199],
+  "unseen_tool_fraction": 0.2,
+  "bm25": {"k1": 1.5, "b": 0.75},
+  "hybrid_exemplars_k": 5,
+  "hybrid_k_sweep": [0, 1, 3, 5, 10, 20],
+  "lr": {"C_grid_for_validation_only": [1, 10, 100], "max_iter": 300},
+  "abstention": {"costs": [0, 0.5, 1, 2, 5], "p_out_primary": 0.5, "p_out_sensitivity": [0.1, 0.3, 0.5],
+                 "threshold_selection": "maximise validation EAS on in-library val queries + queries of O_val tools"},
+  "primary_metric": "top-1 accuracy (closed-set) ; EAS_c (open-world)",
+  "secondary_metrics": ["top-3", "MRR", "macro top-1", "AUROC(in vs out of library)", "latency_ms_per_query"]
+}

@@ -1,0 +1,36 @@
+# Human-AI Collaboration & Research Integrity Audit (`ai_assistance_log.md`)
+
+**Student Name:** Dhairya Ashvinbhai Prajapati  
+**Enrollment / Roll Number:** MNS2026005  
+**Department:** Networks Systems and Computing, India  
+**Phase:** Phase VI — Human-AI Accountability (Prompt 18 Deliverable)  
+
+---
+
+## 1. Complete Log of Significant AI-Assisted Activities
+
+| Activity ID & Phase | AI Tool / Model | Prompt / Task Summary | AI Proposal | Human Decision & Verification Method | Code / Result Change & Final Outcome |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Log 01: Gap Extraction & Study Design (Prompts 01–05)** | Gemini Pro | Analyze `MNS2026005_DHAIRYA PRAJAPATI.pdf` and map verified gaps to a feasible experiment. | Proposed 5 candidate gaps; ranked Cost-Sensitive Evaluation ($\text{EAS}$, Eq. 2) and Awareness-First Gating (MetaTool) as top feasible studies. | **Verified** against Sections 5, 6, and 7 of the review paper. Decided to combine Pathway C (Stage 0 Awareness Gate) + Pathway B (Controlled evaluation under Eq. 1 and Eq. 2). | Recorded Gate G1 brief in `research_decisions.md`; selected `MetaTool` (`ToolE`) for fast, deterministic execution. |
+| **Log 02: Protocol Freezing (Prompts 06–07)** | Gemini Pro | Verify dataset schema, leakage controls, and freeze evaluation blueprint prior to running experiments. | Proposed $N=300$ mixed partition ($200$ MetaTool single-tool queries + $100$ no-tool CS/ML controls) with fixed `seed=42` and frozen $\text{EAS}$ weights. | **Verified** that no-tool control queries are strictly conceptual/theoretical and have zero overlap with real-time API plugins. | Locked hyperparameters and penalty weights ($c_{\text{fp}}=0.50, c_{\text{fn}}=0.75, c_{\text{wrong}}=1.00$) in `configs/experiment_config.yaml`. |
+| **Log 03: Environment & Toy Sanity Check (Prompt 08)** | Gemini Pro | Generate `requirements.txt` and `scripts/env_sanity_check.py` to test BM25, MiniLM-L6-v2, and toy Eq. 1 / Eq. 2 calculations. | Generated diagnostic script testing package versions, seed determinism, and a 5-tool toy catalog (`WeatherAPI`). | **Executed** script in Linux (`Python 3.13.18`, `torch 2.11.0+cpu`, `sentence_transformers 5.7.0`). Inspected console output and HF Hub warning. | Saved `results/env_verification_log.json`; verified `WeatherAPI` ranked #1 (`0.5182`), `toy_accuracy_eq1 = 0.3333`, and `toy_eas_eq2 = -0.3333`. |
+| **Log 04: Dataset Loader & URL Fix (Prompts 09.1 & 11)** | Gemini Pro | Write `src/data_loader.py` to download official MetaTool `plugin_des.json` and `all_clean_data.csv` and build the $N=300$ split. | Generated download URLs pointing to `.../HowieHwong/MetaTool/main/dataset/data/plugin_des.json`. | **Manual Correction #1 (HTTP 404):** Execution failed with `HTTPError: 404 Client Error: Not Found`. Manually inspected the MetaTool GitHub repo and found the branch is `master` and `plugin_des.json` is in `dataset/plugin_des.json`. | Updated URLs in `src/data_loader.py`; reran and verified `199` tools, `20,544` raw queries, and `300` sampled instances (`107` unique tools) in `results/module_9_1_data_summary.json`. |
+| **Log 05: Interactive Notebook Path Fix (Prompt 11)** | Gemini Pro | Run modular scripts inside an interactive Jupyter/Colab kernel cell. | Used `os.path.dirname(os.path.abspath(__file__))` to append the project root to `sys.path`. | **Manual Correction #2 (`NameError`):** Running inside an interactive cell raised `NameError: name '__file__' is not defined`. Replaced with a conditional fallback: `if "__file__" in globals() else os.getcwd()`. | Scripts now execute identically in both CLI (`python3 ...`) and interactive Colab/Jupyter cells. |
+| **Log 06: Baseline & Awareness-Gated Experiments (Prompts 09.2–14)** | Gemini Pro | Implement `src/retriever.py`, `src/awareness_selector.py`, and `scripts/run_experiments.py` for 6 configurations and ablations. | Implemented 1-stage forced baselines (`BM25`, `Dense`, `Hybrid RRF`) and 2-stage Awareness-Gated selectors ($\tau = 0.36$), plus $k$, $\tau$, and $c_{\text{fp}}$ sweeps. | **Verified** every metric calculation and cross-checked CSV logs (`results/results.csv`, `results/ablation_topk_and_tau.csv`) against generated plots (`fig1`–`fig3`). | Confirmed `Hybrid_Awareness_2Stage` reduces $\text{FPIR}$ from `1.0000` to `0.0500`, raises Top-1 Accuracy from `0.4233` to `0.7533`, and boosts Top-1 $\text{EAS}$ from `-0.1550` to `+0.5333`. |
+| **Log 07: Manuscript & Bibliography Verification (Prompts 15–17)** | Gemini Pro | Format paper in ACM single-column review style (`paper/main.html` and `paper/overleaf_main.tex`) with `paper/verified.bib`. | Drafted manuscript text, embedded figures, and formatted 14 BibTeX entries. | **Verified** all 14 DOIs/arXiv IDs against Lab 1 and Lab 4 citation audits and ensured 100% numerical match between tables, text, and CSV outputs. | Final paper and repository package ready for Gate G4 submission and viva walkthrough. |
+
+---
+
+## 2. Three Real Examples of AI Limitations, Manual Corrections & Verification
+
+1. **GitHub Branch & Directory Hallucination (`HTTPError 404` in Module 9.1):**
+   When generating `src/data_loader.py`, the AI assumed the upstream `HowieHwong/MetaTool` repository used the default `main` branch and stored `plugin_des.json` inside `dataset/data/`. Executing the code produced a real `404 Client Error`. Human inspection of the actual GitHub repository structure identified that the repository uses `master` and places `plugin_des.json` at `dataset/plugin_des.json`. Fixing those two URL constants resolved the failure and loaded all $199$ tools and $20,544$ queries.
+2. **Notebook Kernel Global Variable Assumption (`NameError: name '__file__' is not defined`):**
+   The AI-generated scripts used `__file__` to resolve relative imports across `src/` and `scripts/`. While valid when invoked via `python3 scripts/evaluate_baseline.py`, pasting the code directly into an interactive Colab/Jupyter cell raised a `NameError`. We corrected this by guarding `__file__` with `"__file__" in globals()` and falling back to `os.getcwd()`.
+3. **Preventing Metric Distortion Between Positive-Only Recall and Mixed-Split EAS:**
+   Standard retrieval scripts only log top-$k$ recall on positive queries. Human experimental oversight ensured that our evaluation script (`scripts/run_experiments.py`) tracked positive-split retrieval (`63.50%` Top-1, `85.00%` Top-5 for Dense) separately from mixed-split accuracy (`42.33%`) and False-Positive Invocation Rate (`100.0%` without gating vs. `5.0%` with Hybrid Awareness Gating), directly answering our research questions.
+
+---
+
+## 3. Reflection on Vibe Coding & Human Ownership
+Working in short vibe-coding cycles (specifying one module, running a sanity check, inspecting real tracebacks, and verifying outputs before moving to the next module) prevented silent bugs from propagating into the final paper. Every architectural decision—such as pairing Reciprocal Rank Fusion with a calibrated Stage 0 awareness threshold ($\tau = 0.36$) and evaluating sensitivity across $c_{\text{fp}} \in [0.0, 1.5]$—was grounded in our earlier literature review and verified through deterministic code execution.

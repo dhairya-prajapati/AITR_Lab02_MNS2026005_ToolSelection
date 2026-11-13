@@ -1,0 +1,294 @@
+{
+ "BM25": {
+  "n_err": 13471,
+  "top10_confusions": [
+   [
+    "JobTool",
+    "dover_outreach",
+    111
+   ],
+   [
+    "PDF&URLTool",
+    "PDF_Exporter",
+    90
+   ],
+   [
+    "FinanceTool",
+    "locator",
+    85
+   ],
+   [
+    "FinanceTool",
+    "AusPetrolPrices",
+    76
+   ],
+   [
+    "FinanceTool",
+    "QuiverQuantitative",
+    74
+   ],
+   [
+    "NewsTool",
+    "Man_of_Many",
+    66
+   ],
+   [
+    "FinanceTool",
+    "WeatherTool",
+    64
+   ],
+   [
+    "ResearchHelper",
+    "ResearchFinder",
+    61
+   ],
+   [
+    "FinanceTool",
+    "Man_of_Many",
+    56
+   ],
+   [
+    "SEOTool",
+    "seoanalysis",
+    52
+   ]
+  ],
+  "share_errors_in_top20_pairs": 0.08507163536485784,
+  "most_frequent_predicted_when_wrong": {
+   "GameTool": 416,
+   "WeatherTool": 376,
+   "tailor_erp": 370,
+   "Broadway": 362,
+   "sakenowa": 331
+  },
+  "spearman_acc_vs_trainsize": -0.1773756213096557,
+  "acc_by_len_bin": {
+   "(0, 8]": 0.34563253012048195,
+   "(8, 12]": 0.33288841430859584,
+   "(12, 18]": 0.3750626775864951,
+   "(18, 25]": 0.36483050847457626,
+   "(25, 40]": 0.30012903225806453,
+   "(40, 200]": 0.25934314835787087
+  },
+  "macro_vs_micro_top1": [
+   0.444075542020658,
+   0.3439980521061602
+  ]
+ },
+ "Hybrid(k=5)": {
+  "n_err": 9301,
+  "top10_confusions": [
+   [
+    "ResearchHelper",
+    "ResearchFinder",
+    103
+   ],
+   [
+    "FinanceTool",
+    "ExchangeTool",
+    74
+   ],
+   [
+    "ResearchFinder",
+    "ResearchHelper",
+    73
+   ],
+   [
+    "FinanceTool",
+    "QuiverQuantitative",
+    61
+   ],
+   [
+    "FinanceTool",
+    "AusPetrolPrices",
+    59
+   ],
+   [
+    "HousePurchasingTool",
+    "HouseRentingTool",
+    59
+   ],
+   [
+    "ProductSearch",
+    "Review",
+    55
+   ],
+   [
+    "VideoSummarizeTool",
+    "SummarizeAnything_pr",
+    48
+   ],
+   [
+    "SEOTool",
+    "seoanalysis",
+    45
+   ],
+   [
+    "PDF&URLTool",
+    "PDF_Exporter",
+    43
+   ]
+  ],
+  "share_errors_in_top20_pairs": 0.10687022900763359,
+  "most_frequent_predicted_when_wrong": {
+   "ResearchFinder": 170,
+   "SummarizeAnything_pr": 138,
+   "AusPetrolPrices": 132,
+   "chatspot": 132,
+   "ResearchHelper": 126
+  },
+  "spearman_acc_vs_trainsize": -0.10821172147566518,
+  "acc_by_len_bin": {
+   "(0, 8]": 0.5293674698795181,
+   "(8, 12]": 0.5290977042178323,
+   "(12, 18]": 0.5741266922948354,
+   "(18, 25]": 0.563135593220339,
+   "(25, 40]": 0.5267096774193548,
+   "(40, 200]": 0.46998867497168745
+  },
+  "macro_vs_micro_top1": [
+   0.6341533041483379,
+   0.5470659849038227
+  ]
+ },
+ "TFIDF+LR": {
+  "n_err": 4043,
+  "top10_confusions": [
+   [
+    "ResearchHelper",
+    "ResearchFinder",
+    102
+   ],
+   [
+    "ResearchFinder",
+    "ResearchHelper",
+    80
+   ],
+   [
+    "TripAdviceTool",
+    "TripTool",
+    78
+   ],
+   [
+    "TripTool",
+    "TripAdviceTool",
+    65
+   ],
+   [
+    "seoanalysis",
+    "SEOTool",
+    37
+   ],
+   [
+    "HouseRentingTool",
+    "HousePurchasingTool",
+    30
+   ],
+   [
+    "create_qr_code",
+    "qreator",
+    29
+   ],
+   [
+    "stellarexplorer",
+    "NASATool",
+    29
+   ],
+   [
+    "portfoliopilot",
+    "FinanceTool",
+    25
+   ],
+   [
+    "qreator",
+    "create_qr_code",
+    23
+   ]
+  ],
+  "share_errors_in_top20_pairs": 0.1716547118476379,
+  "most_frequent_predicted_when_wrong": {
+   "ProductSearch": 322,
+   "FinanceTool": 221,
+   "TripTool": 213,
+   "ResearchFinder": 192,
+   "PDF&URLTool": 175
+  },
+  "spearman_acc_vs_trainsize": 0.202483415087242,
+  "acc_by_len_bin": {
+   "(0, 8]": 0.7673192771084337,
+   "(8, 12]": 0.7829684997330486,
+   "(12, 18]": 0.8234999164298846,
+   "(18, 25]": 0.8177966101694916,
+   "(25, 40]": 0.7953548387096774,
+   "(40, 200]": 0.7599093997734995
+  },
+  "macro_vs_micro_top1": [
+   0.7651098882962315,
+   0.8031166301436572
+  ]
+ },
+ "examples_LR_errors_seed0": [
+  {
+   "query": "Can you provide me with an updated and detailed list of the players who are currently performing exceptionally well in the National Hockey League (NHL) during this particular season?",
+   "gold": "ndricks_sports_api",
+   "pred": "talkfpl"
+  },
+  {
+   "query": "I heard there are exciting events happening in Singapore next week. Can you give me a list of upcoming events and their details?",
+   "gold": "TripAdviceTool",
+   "pred": "NewsTool"
+  },
+  {
+   "query": "Can you provide information on rental properties in Hiroshima that have been extensively evaluated for seismic safety measures and have low earthquake risk?",
+   "gold": "HouseRentingTool",
+   "pred": "EarthquakeTool"
+  },
+  {
+   "query": "Why can't I seem to make the right call?",
+   "gold": "decision_journal",
+   "pred": "PolishTool"
+  },
+  {
+   "query": "Can you give me insights on the search volume and competition level of a particular keyword?",
+   "gold": "SEOTool",
+   "pred": "bramework"
+  },
+  {
+   "query": "I'm looking for scholarly articles on the history of architecture in ancient Greece.",
+   "gold": "ResearchFinder",
+   "pred": "internetSearch"
+  },
+  {
+   "query": "I want to know the email address and website of Microsoft Corporation.",
+   "gold": "clearbit_integration",
+   "pred": "CompanyInfoTool"
+  },
+  {
+   "query": "I'm writing a historical piece and would love to include some old photographs to give it an authentic feel. Do you have any suggestions?",
+   "gold": "ImageSearch",
+   "pred": "BookTool"
+  }
+ ],
+ "bootstrap_seed0_Hybrid(k=5)_minus_BM25": {
+  "mean": 0.21099001704407108,
+  "ci95": [
+   0.19600681762843924,
+   0.2264426588750913
+  ]
+ },
+ "bootstrap_seed0_TFIDF+LR_minus_Hybrid(k=5)": {
+  "mean": 0.26143839785731676,
+  "ci95": [
+   0.24616508400292184,
+   0.2766009252495739
+  ]
+ },
+ "bootstrap_seed0_BM25_minus_TFIDF-desc": {
+  "mean": -0.005916971025079133,
+  "ci95": [
+   -0.011200389578767957,
+   -0.0012174336498660824
+  ]
+ }
+}
+ANALYSIS DONE
